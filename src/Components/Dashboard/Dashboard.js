@@ -13,7 +13,7 @@ function Dashboard({ setBannerVisibility, setBannerDescription, setBannerTimer, 
   const [originalLink, setOriginalLink] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/banner')
+    axios.get('https://trivendra.pythonanywhere.com/?id=1',)
       .then(response => {
         const { description, timer, link } = response.data;
         setDescription(description);
@@ -31,7 +31,7 @@ function Dashboard({ setBannerVisibility, setBannerDescription, setBannerTimer, 
 
   const handleUpdateBanner = () => {
     const updatedBanner = { description, timer: timeLeft, link };
-    axios.post('http://localhost:5000/api/banner', updatedBanner)
+    axios.put('https://trivendra.pythonanywhere.com/update_banner/', updatedBanner)
       .then(() => {
         setBannerDescription(description);
         setBannerTimer(timeLeft);

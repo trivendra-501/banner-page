@@ -1,4 +1,4 @@
-// backend/server.js
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -8,20 +8,20 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// MySQL connection
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // Your MySQL username
-  password: 'Trivendra@123', // Your MySQL password
-  database: 'banner_db'
-});
 
+
+
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
+});
 db.connect(err => {
   if (err) throw err;
   console.log('MySQL Connected...');
 });
 
-// Get banner details
 app.get('/api/banner', (req, res) => {
   const sql = 'SELECT * FROM banner LIMIT 1';
   db.query(sql, (err, result) => {
@@ -30,7 +30,7 @@ app.get('/api/banner', (req, res) => {
   });
 });
 
-// Update banner details
+
 app.post('/api/banner', (req, res) => {
   const { description, timer, link } = req.body;
   const sql = 'UPDATE banner SET description = ?, timer = ?, link = ? WHERE id = 1';

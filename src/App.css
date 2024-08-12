@@ -1,0 +1,35 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.banner-container, .dashboard-container {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.banner {
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.dashboard {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #e1e1e1;
+}
